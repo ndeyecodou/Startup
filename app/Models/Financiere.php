@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Financiere extends Model
 {
     use HasFactory;
-    
-    
+
+
      protected $fillable = [
              'nom_structure',
              'description',

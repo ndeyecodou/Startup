@@ -50,7 +50,7 @@ class UserController extends Controller
             'nom' => 'required',
             'prenom'=> 'required',
             'loginuser'=> 'required|unique:users',
-             'structure'=> 'required',
+            'structure'=> 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'

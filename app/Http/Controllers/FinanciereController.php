@@ -57,12 +57,12 @@ class FinanciereController extends Controller
             'email'=> 'required',
             'commentaire' => 'required',
         ]);
-    
+
         Financiere::create($request->all());
-    
+
         return redirect()->route('financieres.index')
                         ->with('success',' Structure créée avec succés.');
-   
+
     }
 
     /**
@@ -74,7 +74,7 @@ class FinanciereController extends Controller
     public function show(Financiere $financiere)
     {
         return view('financieres.show',compact('financiere'));
-   
+
     }
 
     /**
@@ -97,6 +97,8 @@ class FinanciereController extends Controller
      */
     public function update(Request $request, Financiere $financiere)
     {
+                         $user = Auth::user();
+
         request()->validate([
             'nom_structure'=> 'required',
             'description'=> 'required',
@@ -105,12 +107,12 @@ class FinanciereController extends Controller
             'adresses'=> 'required',
             'coordonnee'=> 'required',
             'site_web'=> 'required',
-            'email'=> 'required',
+            'user_id'=>'user_id=$user->id',
             'commentaire' => 'required',
         ]);
-    
+
         $financiere->update($request->all());
-    
+
         return redirect()->route('financieres.index')
                         ->with('success','Structure mis à jour avec succés');
     }
@@ -124,9 +126,9 @@ class FinanciereController extends Controller
     public function destroy(Financiere $financiere)
     {
         $financiere->delete();
-    
+
         return redirect()->route('financieres.index')
                         ->with('success','Structure supprimée');
-   
+
     }
 }

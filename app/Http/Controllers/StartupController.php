@@ -62,9 +62,9 @@ class StartupController extends Controller
             'statut'=> 'required',
             'commentaire' => 'required',
         ]);
-    
+
         Startup::create($request->all());
-    
+
         return redirect()->route('startups.index')
                         ->with('success',' Startup créé avec succés.');
     }
@@ -129,7 +129,7 @@ class StartupController extends Controller
     public function destroy(Startup $startup)
     {
           $startup->delete();
-    
+
         return redirect()->route('startups.index')
                         ->with('success','Structure supprimée');
     }

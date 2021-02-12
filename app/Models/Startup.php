@@ -18,7 +18,7 @@ class Startup extends Model
             'adresses',
             'site_web',
             'email',
-            'secteur_activites',            
+            'secteur_activites',
             'statut',
             'commentaire'
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Accompagnement;
 use Illuminate\Http\Request;
-    
+
 class AccompagnementController extends Controller
 {
     /**
@@ -62,14 +62,15 @@ class AccompagnementController extends Controller
             'coordonnee'=> 'required',
             'site_web'=> 'required',
             'email'=> 'required',
+             'user_id'=>'User::find($id)',
             'commentaire' => 'required',
         ]);
-    
+
         Accompagnement::create($request->all());
-    
+
         return redirect()->route('accompagnements.index')
                         ->with('success',' Structure créée avec succés.');
-   
+
     }
 
     /**
@@ -81,7 +82,7 @@ class AccompagnementController extends Controller
     public function show(Accompagnement $accompagnement)
     {
         return view('accompagnements.show',compact('accompagnement'));
-   
+
     }
 
     /**
@@ -115,12 +116,12 @@ class AccompagnementController extends Controller
             'email'=> 'required',
             'commentaire' => 'required',
         ]);
-    
+
         $accompagnement->update($request->all());
-    
+
         return redirect()->route('accompagnements.index')
                         ->with('success','Structure mis à jour avec succés');
-    
+
     }
 
     /**
@@ -132,9 +133,9 @@ class AccompagnementController extends Controller
     public function destroy(Accompagnement $accompagnement)
     {
         $accompagnement->delete();
-    
+
         return redirect()->route('accompagnements.index')
                         ->with('success','Structure supprimée');
-   
+
     }
 }
